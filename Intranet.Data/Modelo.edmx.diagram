@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="838481bb41a54351bd4df0459b59db5e" Name="Diagram1">
+        <EntityTypeShape EntityType="IntranetModel.BinaryItens" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IntranetModel.HistoryLogin" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IntranetModel.HistoryModules" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="IntranetModel.Menu" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IntranetModel.SystemMessage" Width="1.5" PointX="2.75" PointY="4.75" />
+        <AssociationConnector Association="IntranetModel.FK_Menu_Menu" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

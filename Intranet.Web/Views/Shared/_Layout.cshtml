@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>INTRANET</title>
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" type="image/vnd.microsoft.icon" />
+    @Html.IncludeCSS(Url.Content("~/Content/Css/Site.css"))
+    @Html.IncludeCSS(Url.Content("~/Content/Css/Tema/smoothness/jquery-ui-1.8.18.custom.css"))
+    @Html.IncludeCSS(Url.Content("~/Content/Scripts/fancyBox/source/jquery.fancybox.css"))
+    @Html.IncludeCSS(Url.Content("~/Content/Scripts/Menu/jMenu.jquery.css"))
+    @Html.IncludeCSS(Url.Content("~/Content/Css/jquery.tooltip.css"))
+    @Html.IncludeCSS(Url.Content("~/Content/Css/jquery.contextMenu.css"))
+    @RenderSection("Css", false)
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/jquery-1.5.1.min.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/jquery-ui-1.8.18.custom.min.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/UILanguage/jquery.ui.datepicker-pt-BR.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/jquery.ui.touch-punch.min.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/jquery.blockUI.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/jquery.tooltip.min.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/jquery.meio.mask.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/jquery.contextMenu.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/INTRANET.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/highcharts.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/fancyBox/source/jquery.fancybox.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/Menu/jMenu.jquery.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/noty/jquery.noty.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/noty/promise.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/noty/layouts/topCenter.js"))
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/noty/themes/default.js"))
+    <script type="text/javascript">
+        INTRANET.rootApplication = '@ViewData["rootApplication"]';
+    </script>
+    @RenderSection("JavaScript", false)
+</head>
+<body>
+    <div>
+        @{Html.RenderPartial("_UserInfo");}
+        @{Html.RenderPartial("_Header");}
+        @{Html.RenderPartial("_Menu");}
+        <div id="divContent" style="display: none;">
+            @RenderBody()
+        </div>
+    </div>
+    <div id="dialog-message" style="display: none;" title="Mensagem do Sistema">
+        <p>
+            <span id="spanMessageBox"></span>
+        </p>
+    </div>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#jMenu").jMenu({
+                openClick: true,
+                ulWidth: '180',
+                effects: {
+                    effectSpeedOpen: 150,
+                    effectSpeedClose: 150,
+                    effectTypeOpen: 'slide',
+                    effectTypeClose: 'slide',
+                    effectOpen: 'linear',
+                    effectClose: 'linear'
+                },
+                TimeBeforeOpening: 10,
+                TimeBeforeClosing: 250,
+                animatedText: false,
+                paddingLeft: 5
+            });
+
+        });
+
+    </script>
+</body>
+</html>

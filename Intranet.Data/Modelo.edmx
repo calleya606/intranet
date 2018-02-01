@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IntranetModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="IntranetModelStoreContainer">
+          <EntitySet Name="BinaryItens" EntityType="IntranetModel.Store.BinaryItens" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HistoryLogin" EntityType="IntranetModel.Store.HistoryLogin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HistoryModules" EntityType="IntranetModel.Store.HistoryModules" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Menu" EntityType="IntranetModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SystemMessage" EntityType="IntranetModel.Store.SystemMessage" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Menu_Menu" Association="IntranetModel.Store.FK_Menu_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Menu1" EntitySet="Menu" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BinaryItens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Binary" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="DataInserido" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioInsert" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="DataAtualizado" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioUpdate" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UsuarioDelete" Type="nvarchar" MaxLength="100" />
+          <Property Name="Excluido" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HistoryLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AccessDate" Type="datetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserAgent" Type="ntext" Nullable="false" />
+          <Property Name="Ip" Type="nvarchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="HistoryModules">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Href" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="MenuOrder" Type="int" Nullable="false" />
+          <Property Name="ControllerName" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SystemMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="ntext" Nullable="false" />
+          <Property Name="DateMessage" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Menu_Menu">
+          <End Role="Menu" Type="IntranetModel.Store.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="IntranetModel.Store.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IntranetModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="IntranetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BinaryItens" EntityType="IntranetModel.BinaryItens" />
+          <EntitySet Name="HistoryLogin" EntityType="IntranetModel.HistoryLogin" />
+          <EntitySet Name="HistoryModules" EntityType="IntranetModel.HistoryModules" />
+          <EntitySet Name="Menu" EntityType="IntranetModel.Menu" />
+          <EntitySet Name="SystemMessage" EntityType="IntranetModel.SystemMessage" />
+          <AssociationSet Name="FK_Menu_Menu" Association="IntranetModel.FK_Menu_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Menu1" EntitySet="Menu" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BinaryItens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Binary" Name="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DataInserido" Nullable="false" Precision="3" />
+          <Property Type="String" Name="UsuarioInsert" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DataAtualizado" Nullable="false" Precision="3" />
+          <Property Type="String" Name="UsuarioUpdate" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UsuarioDelete" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Excluido" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HistoryLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="AccessDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserAgent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Ip" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HistoryModules">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="ParentId" />
+          <Property Type="String" Name="Href" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <Property Type="Int32" Name="MenuOrder" Nullable="false" />
+          <Property Type="String" Name="ControllerName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menu1" Relationship="IntranetModel.FK_Menu_Menu" FromRole="Menu" ToRole="Menu1" />
+          <NavigationProperty Name="Menu2" Relationship="IntranetModel.FK_Menu_Menu" FromRole="Menu1" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="SystemMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateMessage" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Menu_Menu">
+          <End Type="IntranetModel.Menu" Role="Menu" Multiplicity="0..1" />
+          <End Type="IntranetModel.Menu" Role="Menu1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IntranetModelStoreContainer" CdmEntityContainer="IntranetEntities">
+          <EntitySetMapping Name="BinaryItens">
+            <EntityTypeMapping TypeName="IntranetModel.BinaryItens">
+              <MappingFragment StoreEntitySet="BinaryItens">
+                <ScalarProperty Name="Excluido" ColumnName="Excluido" />
+                <ScalarProperty Name="UsuarioDelete" ColumnName="UsuarioDelete" />
+                <ScalarProperty Name="UsuarioUpdate" ColumnName="UsuarioUpdate" />
+                <ScalarProperty Name="DataAtualizado" ColumnName="DataAtualizado" />
+                <ScalarProperty Name="UsuarioInsert" ColumnName="UsuarioInsert" />
+                <ScalarProperty Name="DataInserido" ColumnName="DataInserido" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Binary" ColumnName="Binary" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoryLogin">
+            <EntityTypeMapping TypeName="IntranetModel.HistoryLogin">
+              <MappingFragment StoreEntitySet="HistoryLogin">
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessDate" ColumnName="AccessDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoryModules">
+            <EntityTypeMapping TypeName="IntranetModel.HistoryModules">
+              <MappingFragment StoreEntitySet="HistoryModules">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="IntranetModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Href" ColumnName="Href" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemMessage">
+            <EntityTypeMapping TypeName="IntranetModel.SystemMessage">
+              <MappingFragment StoreEntitySet="SystemMessage">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DateMessage" ColumnName="DateMessage" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

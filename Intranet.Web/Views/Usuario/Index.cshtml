@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Css
+{
+    @Html.IncludeCSS(Url.Content("~/Content/Css/Usuario.css"))
+}
+@section JavaScript
+{
+    @Html.IncludeJS(Url.Content("~/Content/Scripts/Usuario.js"))
+}
+<h2>Cadastros - Usuários</h2>
+<div id="barraFerramentas">
+    <div style="float: left; margin-right: 5px;">
+        <a class="button" id="btnNovo"><strong>Novo</strong></a>
+    </div>
+    <div style="float: left; margin-right: 5px;">
+        <a class="button" id="btnSalvar"><strong>Salvar</strong></a>
+    </div>
+    <div style="float: left; margin-right: 5px;">
+        <a class="button" id="btnBuscar"><strong>Buscar</strong></a>
+    </div>
+</div>
+<div>
+    @using (Html.BeginForm())
+    {
+        <table class="tblForm" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>Nome</td>
+                <td>
+                    @Html.IntranetTextBox("txtNome", "", false, string.Empty, true)
+                </td>
+            </tr>
+            <tr>
+                <td>Login</td>
+                <td>
+                    @Html.IntranetTextBox("txtUserName", "", false, string.Empty, true)
+                </td>
+            </tr>
+            <tr>
+                <td>Data Expiração</td>
+                <td>
+                    @Html.TextBox("txtDataExpiracao", "", new { @class = "dateFormat date" })
+                </td>
+            </tr>
+            <tr>
+                <td>Ativo</td>
+                <td>
+                    <input type="checkbox" id="chkAtivo" name="chkAtivo" value="true" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="background-color: #ededed; font-weight: bold;">Perfis</td>
+            </tr>
+            @foreach (var item in (List<Intranet.Data.Entities.Perfil>)ViewBag.Perfis)
+            {
+                <tr>
+                    <td>@item.Nome</td>
+                    <td>
+                        <input type="checkbox" id="chkPerfil" name="chkPerfil" class="chkPerfil" value="@item.Id" />
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>
