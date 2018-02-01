@@ -1,9 +1,0 @@
-.divProfileModules { border: 1px solid #ccc; width: 450px; margin-top: 10px; }
-    .divProfileModules .divTitleModules { background-color: #e8e8e8; font-weight: bold; overflow: auto; border-bottom: 1px solid #ccc; }
-        .divProfileModules .divTitleModules .inputChk { position: relative; top: 0px; margin: 4px; }
-        .divProfileModules .divTitleModules .inputChkParent { position: relative; top: 0px; margin: 4px; }
-        .divProfileModules .divTitleModules span { position: relative; top: -2px; margin: 2px; }
-    .divProfileModules .divModules { margin-left: 10px; border: 0px solid red; overflow: auto; }
-        .divProfileModules .divModules .divModule { border: 0px solid blue; float: left; margin-right: 5px; }
-            .divProfileModules .divModules .divModule .inputChk { position: relative; top: 0px; margin: 4px; }
-            .divProfileModules .divModules .divModule span { position: relative; top: -2px; margin: 2px; }
