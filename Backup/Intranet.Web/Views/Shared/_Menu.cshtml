@@ -1,0 +1,23 @@
+﻿<div id="divMenu">
+    <ul id="jMenu">
+        @foreach (var item in Intranet.Helpers.Sessions.ADUser.Menus)
+        {
+            if (item.Menus.Count.Equals(0) && !item.Href.Equals(string.Empty))
+            {
+            <li><a href="@Url.Content(item.Href)">@item.Name</a></li>
+            }
+            else
+            {
+            <li><a class="fNiv">@item.Name</a>
+                <ul>
+                    <li class="arrow"></li>
+                    @foreach (var parentItem in item.Menus)
+                    {                    
+                        <li><a href="@Url.Content(parentItem.Href)">@parentItem.Name</a></li>
+                    }
+                </ul>
+            </li>                                      
+            }
+        }
+    </ul>
+</div>

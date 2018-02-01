@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intranet.Web", "Intranet.Web\Intranet.Web.csproj", "{38D8F6F3-428B-4031-8873-BBBC7D6AD595}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intranet.Resources", "Intranet.Resources\Intranet.Resources.csproj", "{18DED356-7814-4888-862C-69BF6D387AC9}"
@@ -10,6 +8,21 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intranet.Data", "Intranet.Data\Intranet.Data.csproj", "{EC78B687-929D-4136-92CB-B5CA6004DC1C}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tm-srv081:8080/tfs/tmsaprojects
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Intranet.Data\\Intranet.Data.csproj
+		SccProjectName1 = Intranet.Data
+		SccLocalPath1 = Intranet.Data
+		SccProjectUniqueName2 = Intranet.Resources\\Intranet.Resources.csproj
+		SccProjectName2 = Intranet.Resources
+		SccLocalPath2 = Intranet.Resources
+		SccProjectUniqueName3 = Intranet.Web\\Intranet.Web.csproj
+		SccProjectName3 = Intranet.Web
+		SccLocalPath3 = Intranet.Web
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -30,8 +43,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7197D998-46F2-411B-9B81-6137133AA2C1}
 	EndGlobalSection
 EndGlobal
