@@ -18,6 +18,8 @@ namespace Intranet.Controllers
             var historyLogin = new Data.ADO.HistoryLoginADO().GetLastHistoryLogin(new Data.Entities.HistoryLogin() { UserName = Helpers.Sessions.ADUser.UserName });
             ViewBag.HistoryLoginMessage = historyLogin;
 
+
+
             return View();
         }
     }
